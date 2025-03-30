@@ -30,7 +30,7 @@
 </head>
 <body>
     <h1>Game Pong Satu Pemain</h1>
-    <canvas id="pong" width="600" height="800" style="display: none;"></canvas>
+    <canvas id="pong" width="600" height="800"></canvas>
     <div id="playAgain">PLAY AGAIN</div>
     
     <script>
@@ -139,8 +139,6 @@
 
         // Control paddle with mouse/touch only when activated
         function movePaddle(event) {
-            if (!isPaddleActive) return; // Jangan gerakkan paddle jika belum aktif
-
             const mouseX = event.clientX || event.touches[0].clientX; // Get mouse or touch position
             const paddleCenterX = mouseX - canvas.offsetLeft; // Convert mouse position to canvas coordinates
 
@@ -152,7 +150,7 @@
         canvas.addEventListener("mousemove", movePaddle); // For desktop
         canvas.addEventListener("touchmove", movePaddle); // For touch devices
 
-        // Detect if mouse or touch is over the paddle to activate
+        // Detect mouse or touch down to activate paddle movement
         function activatePaddle(event) {
             const mouseX = event.clientX || event.touches[0].clientX;
             const mouseY = event.clientY || event.touches[0].clientY;
